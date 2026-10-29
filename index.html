@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trạm Kiểm Định Socratic — Audit Atelier P1</title>
+<meta name="description" content="Công cụ học tập an toàn thông tin ưu tiên quyền riêng tư — chạy ngoại tuyến 100%">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="inspection-mark small" aria-hidden="true">
+        <svg viewBox="0 0 44 44" width="44" height="44" role="img"><circle cx="22" cy="22" r="19" fill="none" stroke="#1C1B18" stroke-width="1.8"/><circle cx="22" cy="22" r="13.5" fill="none" stroke="#1C1B18" stroke-width="1"/><text x="22" y="26" text-anchor="middle" font-size="8" font-family="Georgia,serif" fill="#1C1B18" font-weight="700">SAA</text></svg>
+      </div>
+      <div class="brand-text">
+        <h1>TRẠM KIỂM ĐỊNH SOCRATIC</h1>
+        <p class="subtitle">Socratic Audit Atelier &mdash; Web MVP &middot; Mốc P1 &middot; Bản cục bộ 100%</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="pill">P1 &middot; 6 QUY TẮC</span>
+      <span class="pill outline">OFFLINE-FIRST</span>
+      <span class="pill outline">ZERO NETWORK CALLS</span>
+    </div>
+  </div>
+  <nav class="nav" aria-label="Điều hướng chính">
+    <button class="nav-btn active" data-tab="workspace"><i class="ico"></i> Bàn Kiểm Định</button>
+    <button class="nav-btn" data-tab="passport">Release Passport</button>
+    <button class="nav-btn" data-tab="benchmark">Benchmark Lab</button>
+    <button class="nav-btn" data-tab="acceptance">Nghiệm Thu P1</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- TAB 1: AUDIT WORKSPACE -->
+<section id="tab-workspace" class="tab active">
+  <!-- Epistemic Boundary Box - always visible -->
+  <div class="epistemic-box">
+    <div class="ep-box-header">
+      <h2>HỘP RANH GIỚI NĂNG LỰC &mdash; EPISTEMIC BOUNDARY BOX</h2>
+      <span class="stamp-inline">CỐ ĐỊNH TRÊN ĐẦU TRANG</span>
+    </div>
+    <div class="ep-grid">
+      <div class="ep-col can">
+        <h3>✓ 6 quy tắc P1 kiểm tra được</h3>
+        <ul>
+          <li><strong>QT-1.1</strong> &mdash; Khóa dịch vụ có định dạng cố định (AI, cloud, token quản trị) trong toàn bộ tệp kể cả chú thích</li>
+          <li><strong>QT-1.2</strong> &mdash; Mật khẩu/khóa bí mật gán trực tiếp cho tên mục nhạy cảm</li>
+          <li><strong>QT-2.1</strong> &mdash; Thao tác chèn trực tiếp nội dung biến vào cấu trúc HTML (innerHTML/write)</li>
+          <li><strong>QT-2.2</strong> &mdash; Biến chuỗi văn bản thành lệnh chạy trực tiếp (eval/Function)</li>
+          <li><strong>QT-2.3</strong> &mdash; Ghép nối trực tiếp dữ liệu vào câu truy vấn (SQL concat)</li>
+          <li><strong>QT-3.1</strong> &mdash; Gọi dữ liệu qua mạng kèm mã định danh động &rarr; Checklist phân quyền</li>
+        </ul>
+      </div>
+      <div class="ep-col cannot">
+        <h3>✕ Điểm mù công cụ tĩnh KHÔNG THỂ tự kết luận</h3>
+        <ul>
+          <li>Không biết khóa còn hoạt động hay đã thu hồi trên máy chủ nhà cung cấp</li>
+          <li>Không nhìn thấy lịch sử Git (commit history) &mdash; chỉ quét văn bản hiện tại</li>
+          <li>Không chứng minh lỗ hổng khai thác được (XSS/SQLi/IDOR thực tế) &mdash; chỉ chỉ ra vị trí cần xem xét</li>
+          <li>Không thấy cấu hình máy chủ, phân quyền, CORS, xác thực phía server</li>
+          <li>Không quét được tệp nhị phân, đã nén/làm rối, hoặc mã sinh động ngoài 3 loại tệp P1</li>
+          <li>Không thay thế kiểm thử xâm nhập hay đánh giá con người</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ep-note">
+      Trạng thái vận hành: <strong>Xử lý bằng bộ 6 quy tắc cục bộ đóng gói sẵn. Việc xác minh 0 yêu cầu mạng được thực hiện riêng thông qua Biên bản Nghiệm thu Mạng Độc lập.</strong>
+    </div>
+  </div>
+
+  <div class="workspace-grid">
+    <div class="panel left-panel">
+      <h3 class="panel-title"><span class="num">01</span> Nạp dữ liệu &mdash; Bàn Kiểm Định</h3>
+
+      <div class="sample-bar">
+        <span class="label">Nạp nhanh 4 kịch bản mẫu giả lập:</span>
+        <div class="sample-btns">
+          <button class="sample-btn" data-sample="A">Mẫu A — Khóa lộ trong chú thích &amp; thao tác rủi ro</button>
+          <button class="sample-btn" data-sample="B">Mẫu B — Tệp máy chủ ghép chuỗi truy vấn</button>
+          <button class="sample-btn" data-sample="C">Mẫu C — Dự án an toàn (bẫy báo nhầm)</button>
+          <button class="sample-btn" data-sample="D">Mẫu D — Gọi dữ liệu theo mã học sinh (Checklist)</button>
+        </div>
+      </div>
+
+      <div class="input-block">
+        <label class="input-label" for="fileInput">Chọn tệp từ máy tính <span class="muted">(hỗ trợ .js, .ts, .jsx, .tsx, .html, .htm, .env, .txt)</span></label>
+        <div class="file-row">
+          <input type="file" id="fileInput" accept=".js,.ts,.jsx,.tsx,.mjs,.cjs,.html,.htm,.env,.txt,.json,.config">
+          <span id="fileName" class="file-name">Chưa chọn tệp</span>
+          <span id="fileTypeBadge" class="badge hidden"></span>
+        </div>
+        <div class="divider"><span>HOẶC</span></div>
+        <label class="input-label" for="textInput">Dán văn bản trực tiếp</label>
+        <textarea id="textInput" placeholder="Dán mã JavaScript / TypeScript, HTML hoặc nội dung .env vào đây...&#10;&#10;Ví dụ:&#10;// TODO: remove before publish&#10;const openaiKey = &quot;sk-proj-abc123...&quot;;"></textarea>
+        <div class="meta-row">
+          <span id="charCount">0 ký tự • 0 dòng</span>
+          <span id="fileCheck" class="file-check"></span>
+        </div>
+      </div>
+
+      <div class="action-bar">
+        <button id="scanBtn" class="btn primary"><span class="btn-ico">◉</span> Quét &amp; Kiểm Định</button>
+        <button id="clearBtn" class="btn danger-outline">Xóa trắng phiên làm việc hiện tại</button>
+      </div>
+
+      <div id="rejectBox" class="reject-box hidden"></div>
+
+      <div class="privacy-mini">
+        <h4>Trạng thái quyền riêng tư (kiểm tra trực tiếp)</h4>
+        <div class="privacy-grid">
+          <div>LocalStorage: <code id="lsCheck">—</code></div>
+          <div>SessionStorage: <code id="ssCheck">—</code></div>
+          <div>Cookies: <code id="ckCheck">—</code></div>
+          <div>IndexedDB nội dung: <code id="idbCheck">—</code></div>
+        </div>
+        <p class="small muted">Ứng dụng <strong>không</strong> ghi văn bản dự án hay chuỗi khóa vào bộ nhớ lâu dài. Mọi xử lý chỉ trong RAM phiên làm việc.</p>
+      </div>
+    </div>
+
+    <div class="panel right-panel">
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">◇</div>
+        <h3>Chưa có kết quả quét</h3>
+        <p>Nạp một trong 4 mẫu hoặc dán mã của bạn rồi bấm <strong>Quét &amp; Kiểm Định</strong>. Kết quả sẽ tách thành 3 nhóm bên dưới.</p>
+        <ul class="empty-hints">
+          <li>Nhóm 1 <span class="dot g1"></span> Màu đỏ gạch — Khớp mẫu bí mật</li>
+          <li>Nhóm 2 <span class="dot g2"></span> Màu hổ phách — Thao tác rủi ro cần xem xét</li>
+          <li>Nhóm 3 <span class="dot g3"></span> Màu xanh lam trầm — Checklist phân quyền</li>
+        </ul>
+      </div>
+
+      <div id="resultWrap" class="hidden">
+        <div class="result-head">
+          <h3>Kết quả kiểm định — <span id="resultFileName">—</span></h3>
+          <div class="counts">
+            <span class="count g1">Nhóm 1: <strong id="cnt1">0</strong></span>
+            <span class="count g2">Nhóm 2: <strong id="cnt2">0</strong></span>
+            <span class="count g3">Nhóm 3: <strong id="cnt3">0</strong></span>
+          </div>
+          <div class="result-meta" id="resultMeta"></div>
+        </div>
+
+        <div id="group1" class="result-group"></div>
+        <div id="group2" class="result-group"></div>
+        <div id="group3" class="result-group"></div>
+
+        <div id="noFinding" class="no-finding hidden">
+          <h4>Không phát hiện dấu hiệu nào trong phạm vi 6 quy tắc.</h4>
+          <p>Điều này <strong>không</strong> có nghĩa là dự án 100% an toàn — hãy xem Hộp Ranh Giới Năng Lực và tiếp tục rà soát thủ công.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 2: RELEASE PASSPORT -->
+<section id="tab-passport" class="tab">
+  <div class="passport-intro">
+    <h2>Trình Xuất Thẻ “Release Passport” — Hồ sơ trước khi công bố</h2>
+    <p>Thẻ này chỉ xuất <strong>thông tin tổng hợp</strong> — tuyệt đối không in chuỗi khóa, mã nguồn gốc hay đường dẫn thư mục đầy đủ. Dấu mộc: <strong>“ĐÃ RÀ SOÁT THEO PHẠM VI ĐƯỢC CÔNG BỐ”</strong>.</p>
+  </div>
+
+  <div class="passport-grid">
+    <div class="passport-controls">
+      <div class="control-card">
+        <h4>Thông tin phiên</h4>
+        <div class="form-row"><label>Loại tệp đã quét</label><input id="ppFileType" readonly value="— chưa quét —"></div>
+        <div class="form-row"><label>Số quy tắc đã chạy</label><input id="ppRulesRun" readonly value="6/6"></div>
+        <div class="form-row"><label>Thời điểm thực hiện</label><input id="ppTime" readonly value="—"></div>
+        <div class="form-row"><label>Checklist phân quyền tự rà</label>
+          <label class="check"><input type="checkbox" id="ppCheck1"> Đã kiểm tra người dùng có đúng là chủ sở hữu ID không</label>
+          <label class="check"><input type="checkbox" id="ppCheck2"> Đã xác thực/xác quyền phía máy chủ (không chỉ ẩn nút)</label>
+          <label class="check"><input type="checkbox" id="ppCheck3"> Đã xác định đây không phải dữ liệu công khai</label>
+        </div>
+        <div class="form-row"><label>Danh mục chưa kiểm tra / giới hạn đã biết</label><textarea id="ppLimits" rows="3" readonly>• Không thể biết khóa còn sống hay đã thu hồi
+• Không nhìn thấy commit history
+• Không chứng minh lỗ hổng khai thác được
+• Không thấy cấu hình máy chủ/phân quyền</textarea></div>
+      </div>
+
+      <div class="control-actions">
+        <button id="copyMdBtn" class="btn primary">Sao chép Markdown</button>
+        <button id="downloadBtn" class="btn outline">Tải xuống .md</button>
+        <span id="copyFeedback" class="muted small"></span>
+      </div>
+
+      <div class="warning-box">
+        <strong>Quy tắc sống còn:</strong>
+        <ul>
+          <li>CẤM in chuỗi khóa nghi ngờ / mã nguồn gốc / đường dẫn đầy đủ vào thẻ</li>
+          <li>CẤM tự tuyên bố “Đã xác minh 0 yêu cầu mạng” hay “Đã kiểm định an toàn”</li>
+          <li>Phải ghi: <em>“Chế độ cấu hình: Xử lý bằng bộ 6 quy tắc cục bộ đóng gói sẵn. Việc xác minh 0 yêu cầu mạng được thực hiện riêng thông qua Biên bản Nghiệm thu Mạng Độc lập.”</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="passport-preview-wrap">
+      <div id="passportPreview" class="passport-card">
+        <div class="pp-header">
+          <div class="pp-mark">
+            <svg viewBox="0 0 80 80" width="64" height="64"><circle cx="40" cy="40" r="36" fill="none" stroke="#1C1B18" stroke-width="2"/><circle cx="40" cy="40" r="26" fill="none" stroke="#1C1B18" stroke-width="1"/><text x="40" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#1C1B18">SAA</text></svg>
+            <div class="pp-mark-text">TRẠM KIỂM ĐỊNH<br>SOCRATIC</div>
+          </div>
+          <div class="pp-title">
+            <h3>RELEASE PASSPORT</h3>
+            <p>Hồ sơ trước khi công bố — Mốc P1</p>
+          </div>
+          <div class="pp-version">vP1.0.6<br>6 Quy tắc</div>
+        </div>
+        <div class="pp-body" id="ppBody">
+          <p class="muted">Chưa có dữ liệu quét. Hãy thực hiện quét ở Bàn Kiểm Định trước.</p>
+        </div>
+        <div class="pp-stamp">
+          <div class="stamp">ĐÃ RÀ SOÁT<br>THEO PHẠM VI<br>ĐƯỢC CÔNG BỐ</div>
+          <div class="stamp-note">Dấu mộc kiểm định — không phải chứng nhận bảo mật</div>
+        </div>
+        <div class="pp-footer">
+          <p>Chế độ cấu hình: Xử lý bằng bộ 6 quy tắc cục bộ đóng gói sẵn. Việc xác minh 0 yêu cầu mạng được thực hiện riêng thông qua Biên bản Nghiệm thu Mạng Độc lập.</p>
+          <p class="small muted">Công cụ chỉ phát hiện chuỗi khớp định dạng / thao tác cần xem xét; không tự kết luận lỗ hổng khai thác được.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 3: BENCHMARK LAB -->
+<section id="tab-benchmark" class="tab">
+  <div class="bench-header">
+    <h2>Phòng Thử Nghiệm Chuẩn “Benchmark Lab” — Đo đúng bản chất</h2>
+    <p>Bảng phân biệt <strong>4 loại đánh giá</strong> và bộ mẫu 8 trường khóa nhãn trước khi chạy.</p>
+  </div>
+
+  <div class="four-types">
+    <div class="type-card">
+      <h4>Loại 1 — Nhận diện bí mật</h4><span class="badge g1">QT-1.1, QT-1.2</span>
+      <p>Phát hiện chuỗi khớp định dạng khóa/mật khẩu. Có thể xác minh khách quan bằng mẫu văn bản.</p>
+    </div>
+    <div class="type-card">
+      <h4>Loại 2 — Nhận diện thao tác rủi ro</h4><span class="badge g2">QT-2.1, QT-2.2, QT-2.3</span>
+      <p>Chỉ ra vị trí có thao tác cần xem xét (innerHTML, eval, SQL concat). Không tự kết luận lỗ hổng.</p>
+    </div>
+    <div class="type-card">
+      <h4>Loại 3 — Kích hoạt Checklist phân quyền</h4><span class="badge g3">QT-3.1</span>
+      <p>Không báo lỗi bảo mật — mở Phiếu tự rà 3 câu hỏi. Đúng/sai phụ thuộc máy chủ.</p>
+    </div>
+    <div class="type-card muted-card">
+      <h4>Loại 4 — Lỗ hổng thực tế</h4><span class="badge outline">Ngoài phạm vi</span>
+      <p>Nằm ngoài khả năng kết luận tự động của bộ mẫu tĩnh. Cần kiểm thử động / review con người.</p>
+    </div>
+  </div>
+
+  <div class="bench-controls">
+    <button id="runBenchBtn" class="btn primary large">▶ Chạy Kiểm Thử Thực Nghiệm</button>
+    <button id="resetBenchBtn" class="btn outline">Đặt lại về “[Để trống]”</button>
+    <span class="muted small">Trước khi bấm, cột <em>Kết quả thực tế</em> phải ở trạng thái <strong>[Để trống trước khi chạy công cụ]</strong> — chứng minh nhãn chuẩn đã khóa trước khi chạy.</span>
+  </div>
+
+  <div id="benchTables"></div>
+
+  <div class="per-rule-stats" id="perRuleStats"></div>
+
+  <div class="changelog">
+    <h3>Nhật ký thay đổi quy tắc (Rule Changelog)</h3>
+    <table class="mini-table">
+      <thead><tr><th>Phiên bản</th><th>Ngày</th><th>Thay đổi</th><th>Nguồn xác nhận</th></tr></thead>
+      <tbody>
+        <tr><td>vP1.0.6</td><td>2026-05-15</td><td>Khóa 6 quy tắc P1; bổ sung nhận diện chú thích cho QT-1.1/1.2; tách 3 nhóm màu</td><td>OWASP Cheat Sheet, UNESCO Guidance</td></tr>
+        <tr><td>vP1.0.5</td><td>2026-04-20</td><td>QT-2.3 loại trừ câu thông báo tiếng Anh thường; QT-3.1 chuyển sang Checklist</td><td>Hội đồng phản biện Vòng 6</td></tr>
+        <tr><td>vP1.0.4</td><td>2026-03-10</td><td>Thêm bẫy SHA-256 và placeholder để giảm báo nhầm</td><td>Benchmark Lab</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TAB 4: ACCEPTANCE -->
+<section id="tab-acceptance" class="tab">
+  <h2>Bảng Nghiệm Thu P1 (16 Tiêu chí) &amp; Quy Trình Đo Mạng Độc Lập</h2>
+
+  <div class="measure-box">
+    <h3>Quy trình Đo Mạng Độc Lập — 4 bước (tự thực hiện)</h3>
+    <ol class="steps">
+      <li><strong>Bước 1 — Ngắt mạng / Mở gói cục bộ:</strong> Ngắt Wi-Fi hoặc mở thư mục dự án bằng <code>file://</code> / <code>http-server</code> cục bộ. Xác nhận không cần Internet.</li>
+      <li><strong>Bước 2 — Mở Network Monitor &amp; xóa trắng:</strong> Mở DevTools → Network → bấm <em>Clear</em> / làm mới. Sẵn sàng ghi.</li>
+      <li><strong>Bước 3 — Chạy quét đầy đủ:</strong> Bấm quét ở Bàn Kiểm Định, mở bài học Socratic (Xem gợi ý / Giải thích), xuất Release Passport.</li>
+      <li><strong>Bước 4 — Xác nhận 0 yêu cầu mạng &amp; bộ nhớ trống:</strong> Kiểm tra Network tab = <strong>0 requests</strong> ra ngoài; Application → LocalStorage/SessionStorage/Cookies = rỗng cho nội dung quét.</li>
+    </ol>
+    <p class="note">Biên bản này là <strong>việc xác minh riêng</strong>; Release Passport chỉ ghi trung thực cấu hình và không tự tuyên bố kết quả đo.</p>
+  </div>
+
+  <div class="checklist-wrap">
+    <h3>Checklist Nghiệm thu P1 — 16 tiêu chí (7,8/10 Hội đồng Vòng 6) <span class="progress" id="checkProgress">0/16</span></h3>
+    <p class="muted small"><em>Checklist này là công cụ quản lý công việc; việc đánh dấu hoàn thành không tự thay thế bằng chứng nghiệm thu.</em></p>
+
+    <div class="check-groups" id="checkGroups"></div>
+  </div>
+
+  <div class="evidence-box">
+    <h4>Bằng chứng cần đính kèm khi nộp (Hồ sơ GitHub)</h4>
+    <ul>
+      <li>Ảnh chụp Network tab = 0 requests sau khi quét</li>
+      <li>Ảnh Application tab = không có nội dung quét trong Storage</li>
+      <li>File Release Passport .md xuất từ công cụ</li>
+      <li>Ảnh Benchmark Lab sau khi “Chạy Kiểm Thử Thực Nghiệm” với bảng thống kê riêng từng quy tắc</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div>Trạm Kiểm Định Socratic — Socratic Audit Atelier • MVP P1 • Chạy ngoại tuyến 100% • Không gọi AI ngoài • Không lưu trữ lâu dài • Dấu mộc: <strong>ĐÃ RÀ SOÁT THEO PHẠM VI ĐƯỢC CÔNG BỐ</strong></div>
+  <div class="small muted">Thiết kế Heritage Atelier — Giấy #F4EFE6 • Thẻ #FFFDF9 • Mực #1C1B18 • Đỏ gạch #C83E2B • Hổ phách #9A5B13 • Lam trầm #2B4C7E</div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
