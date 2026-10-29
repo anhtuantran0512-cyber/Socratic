@@ -616,7 +616,7 @@ function renderProfile(d){
     empty.classList.add('hidden');
     wrap.classList.remove('hidden');
     // bind hint buttons
-    containerBind(wrapperEl=>{}, wrap);
+    // containerBind removed — trực tiếp bind bên dưới
     $$('.hint-btn').forEach(b=> b.addEventListener('click', e=> e.target.parentElement.querySelector('.hint').classList.toggle('open')));
     $$('.explain-btn').forEach(b=> b.addEventListener('click', e=> e.target.parentElement.querySelector('.explain').classList.toggle('open')));
     $$('.side-btn').forEach(b=> b.addEventListener('click', e=> e.target.parentElement.querySelector('.side').classList.toggle('open')));
@@ -646,6 +646,12 @@ function renderProfile(d){
       <p class="small muted" style="margin-top:8px">Lưu ý: Thẻ này <strong>không</strong> chứa chuỗi khóa, mã nguồn hay đường dẫn đầy đủ — chỉ thống kê tổng hợp.</p>
     `;
     $('#ppBody').innerHTML = body;
+    // update mini bars for collectible ticket
+    const bars=$('#ppBars');
+    if(bars){
+      const max=Math.max(1,cnt1,cnt2,cnt3);
+      bars.innerHTML=`<i style="height:${6+ (cnt1/max)*20}px;background:var(--g1)"></i><i style="height:${6+ (cnt2/max)*20}px;background:var(--g2)"></i><i style="height:${6+ (cnt3/max)*20}px;background:var(--g3)"></i>`;
+    }
   }
 
   // ---------- Benchmark Lab ----------
@@ -942,6 +948,8 @@ function renderProfile(d){
     reader.readAsText(file);
   }
   function handleScan(){
+    // scanning pulse
+    const pulse=$('#scanPulse'); if(pulse){ pulse.classList.add('on'); setTimeout(()=>pulse.classList.remove('on'), 900); }
     let content=$('#textInput').value;
     if(!content.trim()){
       alert('Vui lòng dán văn bản hoặc chọn tệp trước khi quét.');
@@ -988,15 +996,44 @@ function renderProfile(d){
     try{ localStorage.clear(); sessionStorage.clear(); } catch(e){}
   }
 
-  // nav
+  // nav (tabs + hero scroll)
   $$('.nav-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
+      if(btn.dataset.scroll){
+        document.querySelector(btn.dataset.scroll)?.scrollIntoView({behavior:'smooth'});
+        return;
+      }
       const tab=btn.dataset.tab;
+      if(!tab) return;
       $$('.nav-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       $$('.tab').forEach(t=>t.classList.remove('active'));
-      $(`#tab-${tab}`).classList.add('active');
-      window.scrollTo(0,0);
+      const el=$(`#tab-${tab}`);
+      if(el) el.classList.add('active');
+      document.querySelector('.atelier-frame')?.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  $('#goAtelier')?.addEventListener('click', ()=> document.querySelector('.atelier-frame')?.scrollIntoView({behavior:'smooth'}));
+  $('#goTraps')?.addEventListener('click', ()=> $('#traps')?.scrollIntoView({behavior:'smooth'}));
+
+  // theme dual
+  const themeBtn=$('#themeToggle');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    if(themeBtn) themeBtn.textContent = t==='dark' ? '☀ Daylight' : '☾ Darkroom';
+  }
+  themeBtn?.addEventListener('click', ()=>{
+    const cur=document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    applyTheme(cur);
+  });
+  // X-Ray switcher
+  $$('.xray-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      $$('.xray-tab').forEach(x=>x.classList.remove('active'));
+      tab.classList.add('active');
+      const mode=tab.dataset.mode;
+      $('#panePretty')?.classList.toggle('active', mode==='pretty');
+      $('#paneXray')?.classList.toggle('active', mode==='xray');
     });
   });
 
