@@ -578,7 +578,7 @@ function renderProfile(d){
           </div>
           <div class="snippet">${esc(f.snippet || f.value || '').slice(0,500)}</div>
           <div class="fields-grid">
-            <div class="field"><h5>01 — MÃ QUY TẮC</h5><p>${f.rule} — ${f.group===1?'Khớp mẫu bí mật':f.group===2?'Thao tác rủi ro cần xem xét':'Checklist phân quyền'}</p></div>
+            <div class="field"><h5>01 — MÃ QUY TẮC</h5><p>${f.rule} — ${f.group===1?'Để quên khóa/mật khẩu':f.group===2?'Chỗ dễ bị hỏi xoáy':'Câu hỏi tự kiểm phân quyền'}</p></div>
             <div class="field"><h5>02 — VỊ TRÍ &amp; PHÂN LOẠI</h5><p>Dòng ${f.line}, cột ${f.col}${f.inComment?' • trong chú thích/tài liệu':''}${isPlaceholder?' • chuỗi giữ chỗ':''}</p></div>
             <div class="field"><h5>03 — BẰNG CHỨNG ĐỊNH DẠNG</h5><p>${esc(f.evidence)}</p></div>
             <div class="field"><h5>04 — TRÍCH ĐOẠN (đã che một phần nếu là khóa)</h5><p>${esc(maskSecret(f.value||f.snippet||''))}</p></div>
@@ -587,15 +587,14 @@ function renderProfile(d){
           </div>
           <div class="two-col">
             <div class="emergency">
-              <h4>⛑ LUỒNG BẢO VỆ KHẨN CẤP — LUÔN MỞ</h4>
+              <h4>⛑ CÁCH SỬA NGAY TRƯỚC KHI NỘP BÀI — LUÔN MỞ</h4>
               <p>${esc(f.emergency)}</p>
             </div>
             <div class="socratic">
-              <h4>❓ LUỒNG CÂU HỎI SOCRATIC</h4>
+              <h4>❓ CÂU HỎI GIÁM KHẢO HAY HỎI XOÁY Ở CHỖ NÀY (Luyện Vấn Đáp)</h4>
               <p><em>${esc(f.socraticQ)}</em></p>
-              <button class="mini-btn hint-btn">Xem gợi ý</button>
-              <button class="mini-btn explain-btn">Giải thích bản chất</button>
-              <button class="mini-btn side-btn">Tác dụng phụ khi sửa</button>
+              <button class="mini-btn hint-btn">Xem gợi ý trả lời</button>
+              <button class="mini-btn explain-btn">Giải thích bản chất + Lưu ý tác dụng phụ khi sửa</button>
               <div class="hint-box hint">${esc(f.hint)}</div>
               <div class="hint-box explain">${esc(f.explanation)}</div>
               <div class="hint-box side">${esc(f.sideEffect)}</div>
@@ -609,9 +608,9 @@ function renderProfile(d){
       }
       container.innerHTML=html;
     }
-    renderGroup(g1, findings.filter(f=>f.group===1), 'NHÓM 1 — KHỚP MẪU BÍ MẬT (QT-1.1, QT-1.2)', 'g1');
-    renderGroup(g2, findings.filter(f=>f.group===2), 'NHÓM 2 — THAO TÁC RỦI RO CẦN XEM XÉT (QT-2.1, QT-2.2, QT-2.3)', 'g2');
-    renderGroup(g3, findings.filter(f=>f.group===3), 'NHÓM 3 — CHECKLIST TỰ RÀ SOÁT SOCRATIC VỀ PHÂN QUYỀN (QT-3.1)', 'g3');
+    renderGroup(g1, findings.filter(f=>f.group===1), 'NHÓM 1 — ĐỂ QUÊN KHÓA/MẬT KHẨU (QT-1.1, QT-1.2)', 'g1');
+    renderGroup(g2, findings.filter(f=>f.group===2), 'NHÓM 2 — CHỖ DỄ BỊ HỎI XOÁY (QT-2.1, QT-2.2, QT-2.3)', 'g2');
+    renderGroup(g3, findings.filter(f=>f.group===3), 'NHÓM 3 — CÂU HỎI TỰ KIỂM PHÂN QUYỀN (QT-3.1)', 'g3');
 
     empty.classList.add('hidden');
     wrap.classList.remove('hidden');
